@@ -23,12 +23,11 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
-
-      - name: Make Gradle Wrapper Executable
-        run: chmod +x gradlew || true
+        with:
+          gradle-version: '8.11.1'
 
       - name: Build Mod with Loom
-        run: ./gradlew build --no-daemon
+        run: gradle build --no-daemon
 
       - name: Upload Mod Artifact
         uses: actions/upload-artifact@v4
