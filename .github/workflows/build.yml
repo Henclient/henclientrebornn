@@ -21,17 +21,22 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: '8.11.1'
-
-      - name: Build Mod with Loom
-        run: gradle build --no-daemon
+      - name: Build Mod with Gradle
+        run: |
+          if [ -f "build.gradle" ]; then
+            gradle build --no-daemon
+          elif [ -f "henclient-reborn/build.gradle" ]; then
+            cd henclient-reborn
+            gradle build --no-daemon
+          else
+            DIR=$(find . -name "build.gradle" -not -path "*/.*" | head -n 1 | xargs dirname)
+            cd "$DIR"
+            gradle build --no-daemon
+          fi
 
       - name: Upload Mod Artifact
         uses: actions/upload-artifact@v4
         with:
           name: HenClient-Reborn-1.21.11
-          path: build/libs/*-1.0.0.jar
+          path: "**/build/libs/*-1.0.0.jar"
           if-no-files-found: error
