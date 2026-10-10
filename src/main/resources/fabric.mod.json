@@ -1,0 +1,27 @@
+{
+"schemaVersion": 1,
+"id": "henclient",
+"version": "${version}",
+"name": "HenClient Reborn",
+"description": "Next-generation lightweight Fabric utility client for Minecraft 1.21.11.",
+"authors": [
+"HenClient Team"
+],
+"contact": {},
+"license": "MIT",
+"environment": "client",
+"entrypoints": {
+"client": [
+"net.henclient.HenClient"
+]
+},
+"mixins": [
+"henclient.mixins.json"
+],
+"depends": {
+"fabricloader": ">=0.18.0",
+"minecraft": "~1.21.11",
+"java": ">=21",
+"fabric-api": "*"
+}
+}

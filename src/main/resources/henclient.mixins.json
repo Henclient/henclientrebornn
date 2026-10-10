@@ -1,0 +1,13 @@
+{
+"required": true,
+"minVersion": "0.8",
+"package": "net.henclient.mixin",
+"compatibilityLevel": "JAVA_21",
+"mixins": [],
+"client": [
+"CameraMixin"
+],
+"injectors": {
+"defaultRequire": 1
+}
+}
